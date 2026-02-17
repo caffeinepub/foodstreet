@@ -1,0 +1,22 @@
+{
+  "frontend/src/pages/delivery/DeliveryDashboardPage.tsx": "Delivery partner dashboard with tabs for available deliveries and assigned deliveries, allowing partners to accept orders and update delivery status (picked up/delivered).",
+  "frontend/src/pages/admin/AdminDashboardPage.tsx": "Admin landing page with navigation cards to restaurants, orders, users, and delivery partner requests management sections.",
+  "frontend/src/pages/admin/AdminRestaurantsPage.tsx": "Admin page for managing restaurants with tabs for pending/active/suspended restaurants, showing full details including owner principal, address, phone, rating, and status actions.",
+  "frontend/src/pages/admin/AdminOrdersPage.tsx": "Admin page displaying all orders with customer names resolved from user profiles, restaurant names, order details, and filters by status and restaurant with \"Unknown customer\" fallback.",
+  "frontend/src/pages/admin/AdminUsersPage.tsx": "Admin page listing all users with comprehensive profile details including name, phone, role, delivery address (when present), restaurant count (when present), principal, and delivery partner approval status.",
+  "frontend/src/components/reviews/ReviewComposer.tsx": "Review submission form allowing customers to rate (1-5 stars) and write comments for delivered orders, with duplicate review prevention.",
+  "frontend/src/components/reviews/ReviewList.tsx": "Review display component showing average rating, review count, and list of individual reviews with star ratings and comments.",
+  "frontend/src/pages/customer/OrderDetailPage.tsx": "Order detail page showing order status timeline, delivery partner info, order summary, and review composer for delivered orders with manual refresh and auto-polling.",
+  "frontend/src/pages/customer/RestaurantDetailPage.tsx": "Restaurant detail page displaying restaurant info, menu items organized by veg/non-veg categories, reviews section, and add-to-cart functionality with quantity selection modal.",
+  "frontend/src/index.css": "Global styles with warm terracotta/cream/charcoal OKLCH color system for light and dark modes, avoiding blue/purple primary colors per Foodstreet brand requirements.",
+  "frontend/index.html": "HTML entry point with Foodstreet app icon favicon and proper page title.",
+  "frontend/src/components/auth/ProfileSetupDialog.tsx": "Profile setup dialog with role selection including \"Admin Panel\" option, displays error message when non-admin users attempt to self-assign admin role.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including user profile queries (useGetCallerUserProfile, useGetUserProfile), delivery partner approval hooks, and admin restaurant/order/user management with proper error handling and cache invalidation.",
+  "frontend/src/components/auth/RoleGate.tsx": "Role-based access control component that stores intended routes when unauthenticated users attempt to access protected pages and blocks unapproved delivery partners.",
+  "frontend/src/pages/admin/AdminDeliveryPartnerRequestsPage.tsx": "Admin page for viewing and approving pending delivery partner signup requests, showing name, principal, and approval action.",
+  "frontend/src/App.tsx": "Main app component with routing, profile setup dialog, and PostAuthRedirect component that waits for profile resolution before navigating users to appropriate role-based routes or remembered intended routes with proper TypeScript null checks using truthy check instead of strict null comparison.",
+  "frontend/src/utils/authRouting.ts": "Helper utilities to determine role-based landing routes and check if a given path is allowed for a specific AppRole.",
+  "frontend/src/utils/intendedRoute.ts": "SessionStorage utilities to remember, retrieve, and clear the intended route for post-login redirects.",
+  "frontend/src/components/auth/AccessDeniedScreen.tsx": "Access denied screen with conditional login button for unauthenticated users and informational message for unauthorized users.",
+  "frontend/src/layouts/AppLayout.tsx": "App layout with header navigation, role-based links, login/logout functionality that clears intended routes on logout, and footer with attribution."
+}

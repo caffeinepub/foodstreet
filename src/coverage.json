@@ -1,0 +1,63 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-17T17:11:38.555Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-15",
+        "summary": "Fix the login routing flow so the app does not navigate into the main app experience until the signed-in user’s existing profile (user id/profile record) has been fetched and resolved; once resolved, redirect the user to the correct role-based landing route (or keep them on their intended route if permitted).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/utils/authRouting.ts",
+          "frontend/src/utils/intendedRoute.ts",
+          "frontend/src/App.tsx",
+          "frontend/src/layouts/AppLayout.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/utils/authRouting.ts",
+          "frontend/src/utils/intendedRoute.ts",
+          "frontend/src/App.tsx",
+          "frontend/src/layouts/AppLayout.tsx"
+        ]
+      },
+      {
+        "id": "REQ-16",
+        "summary": "Preserve and honor the user’s intended destination across the login flow: when a user hits a protected route while logged out, store that route and, after successful login + profile resolution, navigate back to it only if the user’s resolved role is authorized for that route; otherwise fall back to the role-based landing route.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/auth/RoleGate.tsx",
+          "frontend/src/components/auth/AccessDeniedScreen.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/auth/RoleGate.tsx",
+          "frontend/src/components/auth/AccessDeniedScreen.tsx",
+          "frontend/src/App.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/components/auth/AccessDeniedScreen.tsx",
+    "frontend/src/components/auth/RoleGate.tsx",
+    "frontend/src/layouts/AppLayout.tsx",
+    "frontend/src/utils/authRouting.ts",
+    "frontend/src/utils/intendedRoute.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

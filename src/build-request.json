@@ -1,0 +1,58 @@
+{
+  "kind": "build_request",
+  "title": "Fix login redirect to resolve existing user profile before routing",
+  "projectName": "Foodstreet",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-15",
+      "text": "Fix the login routing flow so the app does not navigate into the main app experience until the signed-in user’s existing profile (user id/profile record) has been fetched and resolved; once resolved, redirect the user to the correct role-based landing route (or keep them on their intended route if permitted).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "make sure during login automatically the app redirect the app to the existing user id make sure it does not redirect automatically to the app please fix this issue"
+        ]
+      },
+      "acceptanceCriteria": [
+        "After completing Internet Identity login, the UI waits for useGetCallerUserProfile() to finish fetching before any automatic navigation occurs.",
+        "If the caller already has a user profile, the app redirects them to the appropriate role landing page (Customer -> '/', Restaurant Owner -> '/owner', Delivery Partner -> '/delivery', Admin -> '/admin') unless they are already on a route allowed for their role.",
+        "If the caller does not have a user profile (new user), the app does not redirect into role pages and instead keeps the user in the profile-setup flow (ProfileSetupDialog remains the gate).",
+        "The fix does not require changes to the Internet Identity hook files under frontend/src/hooks/useInternetIdentity.ts(x) (immutable paths)."
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Preserve and honor the user’s intended destination across the login flow: when a user hits a protected route while logged out, store that route and, after successful login + profile resolution, navigate back to it only if the user’s resolved role is authorized for that route; otherwise fall back to the role-based landing route.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "make sure during login automatically the app redirect the app to the existing user id"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Attempting to open any protected route while logged out does not permanently bounce the user to '/'; instead, the requested route is remembered for after login.",
+        "After login, if the remembered route is allowed by RoleGate for the resolved profile role, the user is redirected to that remembered route.",
+        "After login, if the remembered route is not allowed for the resolved role, the user is redirected to the correct role landing route and not left on an access-denied screen."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts or frontend/src/hooks/useInternetIdentity.tsx (immutable paths).",
+    "Keep routing within the existing TanStack Router setup and existing RoleGate authorization behavior."
+  ],
+  "nonGoals": [
+    "Adding new roles or changing the existing role model.",
+    "Changing backend user/profile schema or adding new backend endpoints for this fix.",
+    "Implementing real-time routing updates beyond the login redirect fix."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

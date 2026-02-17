@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Build a food delivery app named Foodstreet with functionality and features similar to Zomato.",
+  "architectural_notes": [
+    "Login routing should resolve the current authenticated user to their existing stored user profile/userId (if present) and route accordingly; avoid unconditional auto-redirect into the app without matching/loading the existing user record."
+  ],
+  "known_issues": [
+    "Bug: During login, app redirects automatically into the app instead of resolving/redirecting based on the existing user id/profile; needs fix in login routing flow."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-implement-internet-identity-sign-in-and-a-role-based-account-model-for-foodstreet-with-at-least-customer-restaurant-owner-delivery-partner-and-admin-roles-users-must-be-able-to-sign-in-out-and-be-routed-to-the-correct-experience-based-on-role",
+      "title": "Implement Internet Identity sign-in and a role-based account model for Foodstreet with at least: Customer, Restaurant Owner, Delivery Partner, and Admin roles; users must be able to sign in/out and be routed to the correct experience based on role.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-the-customer-marketplace-experience-browse-restaurants-view-restaurant-details-view-menus-with-item-variants-add-ons-add-remove-items-to-a-cart-manage-quantities-choose-a-delivery-address-and-place-an-order",
+      "title": "Create the customer marketplace experience: browse restaurants, view restaurant details, view menus with item variants/add-ons, add/remove items to a cart, manage quantities, choose a delivery address, and place an order.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-search-and-discovery-features-similar-to-a-modern-food-delivery-marketplace-global-search-for-restaurants-and-menu-items-filters-cuisine-rating-price-range-veg-non-veg-and-sorting-rating-delivery-time",
+      "title": "Implement search and discovery features similar to a modern food-delivery marketplace: global search for restaurants and menu items, filters (cuisine, rating, price range, veg/non-veg), and sorting (rating, delivery time).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-order-lifecycle-and-tracking-non-real-time-customers-can-view-order-history-and-order-details-delivery-status-changes-are-reflected-via-polling-refresh-order-statuses-must-include-at-least-placed-accepted-preparing-picked-up-delivered-cancelled",
+      "title": "Add order lifecycle and tracking (non-real-time): customers can view order history and order details; delivery status changes are reflected via polling/refresh; order statuses must include at least: Placed, Accepted, Preparing, Picked Up, Delivered, Cancelled.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-restaurant-owner-portal-to-manage-restaurant-profile-and-menu-onboarding-creation-request-edit-restaurant-info-manage-categories-and-menu-items-price-availability-photos-optional-and-manage-incoming-orders-by-accepting-rejecting-and-updating-preparation-status",
+      "title": "Create a Restaurant Owner portal to manage restaurant profile and menu: onboarding/creation request, edit restaurant info, manage categories and menu items (price, availability, photos optional), and manage incoming orders by accepting/rejecting and updating preparation status.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-delivery-partner-portal-view-available-orders-ready-for-pickup-accept-an-assignment-and-update-delivery-statuses-picked-up-delivered",
+      "title": "Create a Delivery Partner portal: view available orders ready for pickup, accept an assignment, and update delivery statuses (Picked Up, Delivered).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-admin-dashboard-to-oversee-the-marketplace-review-approve-restaurant-onboarding-requests-suspend-unsuspend-restaurants-view-all-orders-and-manage-user-roles-restricted-to-admin",
+      "title": "Create an Admin dashboard to oversee the marketplace: review/approve restaurant onboarding requests, suspend/unsuspend restaurants, view all orders, and manage user roles (restricted to Admin).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-customer-ratings-and-reviews-customers-can-rate-and-review-restaurants-and-optionally-individual-items-only-after-an-order-is-delivered-restaurant-pages-show-aggregated-rating-and-recent-reviews",
+      "title": "Add customer ratings and reviews: customers can rate and review restaurants (and optionally individual items) only after an order is delivered; restaurant pages show aggregated rating and recent reviews.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-and-implement-a-coherent-foodstreet-ui-theme-and-layout-system-colors-typography-spacing-component-usage-applied-consistently-across-pages-use-a-warm-food-inspired-style-e-g-terracotta-cream-charcoal-and-avoid-blue-purple-as-primary-colors",
+      "title": "Design and implement a coherent Foodstreet UI theme and layout system (colors, typography, spacing, component usage) applied consistently across pages; use a warm, food-inspired style (e.g., terracotta, cream, charcoal) and avoid blue/purple as primary colors.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-and-add-static-brand-illustration-assets-for-foodstreet-and-render-them-in-the-ui-from-frontend-public-assets-generated-no-backend-image-serving",
+      "title": "Generate and add static brand/illustration assets for Foodstreet and render them in the UI from frontend/public/assets/generated (no backend image serving).",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-profile-setup-signup-role-selector-to-include-a-new-option-labeled-admin-panel-that-maps-to-the-existing-admin-app-role-and-ensure-the-backend-prevents-non-admin-users-from-self-assigning-the-admin-role-via-profile-setup",
+      "title": "Update the profile setup (signup) role selector to include a new option labeled \"Admin Panel\" that maps to the existing Admin app role, and ensure the backend prevents non-admin users from self-assigning the Admin role via profile setup.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-the-admin-panel-add-a-dedicated-view-that-shows-delivery-agent-addition-requests-by-listing-users-who-signed-up-as-delivery-partner-and-provide-an-admin-action-to-approve-enable-those-delivery-partners-so-the-admin-can-manage-delivery-agent-additions-as-requests",
+      "title": "In the Admin panel, add a dedicated view that shows \"delivery agent addition\" requests by listing users who signed up as Delivery Partner, and provide an admin action to approve/enable those delivery partners (so the Admin can manage delivery agent additions as requests).",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-expand-admin-panel-data-visibility-so-the-admin-can-view-full-details-for-restaurants-customers-and-delivery-partners-and-update-the-admin-order-history-view-so-each-order-shows-the-customer-name-not-only-the-customer-principal",
+      "title": "Expand Admin panel data visibility so the Admin can view full details for restaurants, customers, and delivery partners, and update the Admin order history view so each order shows the customer name (not only the customer principal).",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-login-routing-flow-so-the-app-does-not-navigate-into-the-main-app-experience-until-the-signed-in-user-s-existing-profile-user-id-profile-record-has-been-fetched-and-resolved-once-resolved-redirect-the-user-to-the-correct-role-based-landing-route-or-keep-them-on-their-intended-route-if-permitted",
+      "title": "Fix the login routing flow so the app does not navigate into the main app experience until the signed-in user’s existing profile (user id/profile record) has been fetched and resolved; once resolved, redirect the user to the correct role-based landing route (or keep them on their intended route if permitted).",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-preserve-and-honor-the-user-s-intended-destination-across-the-login-flow-when-a-user-hits-a-protected-route-while-logged-out-store-that-route-and-after-successful-login-profile-resolution-navigate-back-to-it-only-if-the-user-s-resolved-role-is-authorized-for-that-route-otherwise-fall-back-to-the-role-based-landing-route",
+      "title": "Preserve and honor the user’s intended destination across the login flow: when a user hits a protected route while logged out, store that route and, after successful login + profile resolution, navigate back to it only if the user’s resolved role is authorized for that route; otherwise fall back to the role-based landing route.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create Foodstreet food delivery app with Zomato-like features and functionality (customer app + restaurant + delivery + admin flows).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Persist all core marketplace data in the Motoko backend (single-actor): user profiles/roles, restaurants, menus, cart-to-order conversion, order records and status history, delivery assignments, and reviews; include stable storage support so data survives canister upgrades.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Enhance signup/admin experience: add an \"Admin panel\" category/role at sign up (or a clear Admin access path) and expand Admin dashboard to show onboarding requests for restaurants and delivery agents, plus full details for restaurants/customers/delivery partners and order history including customer names.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Foodstreet",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

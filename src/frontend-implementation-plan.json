@@ -1,0 +1,65 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Foodstreet: Fix login redirect to wait for profile resolution and honor intended route",
+  "requirements": [
+    {
+      "id": "REQ-15",
+      "summary": "Gate post-login navigation until useGetCallerUserProfile() resolves, then route based on resolved profile role while keeping new users in profile setup.",
+      "acceptanceCriteria": [
+        "After completing Internet Identity login, the UI waits for useGetCallerUserProfile() to finish fetching before any automatic navigation occurs.",
+        "If the caller already has a user profile, the app redirects them to the appropriate role landing page (Customer -> '/', Restaurant Owner -> '/owner', Delivery Partner -> '/delivery', Admin -> '/admin') unless they are already on a route allowed for their role.",
+        "If the caller does not have a user profile (new user), the app does not redirect into role pages and instead keeps the user in the profile-setup flow (ProfileSetupDialog remains the gate).",
+        "The fix does not require changes to the Internet Identity hook files under frontend/src/hooks/useInternetIdentity.ts(x) (immutable paths)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/authRouting.ts",
+          "operation": "create",
+          "description": "Add helpers to (1) compute role-based landing routes for AppRole, and (2) determine whether a given URL/path is permitted for a given AppRole (mirroring the existing RoleGate allowedRoles behavior for the app’s current route set). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/utils/intendedRoute.ts",
+          "operation": "create",
+          "description": "Add sessionStorage utilities to set/get/clear a remembered intended route for post-login redirects (store full current URL fragment needed for TanStack Router navigation). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Implement a post-auth redirect effect that runs only after identity is present and useGetCallerUserProfile() is fetched: (a) if userProfile is null, do not navigate (ProfileSetupDialog remains the gate); (b) if userProfile exists, ensure the user is on an allowed route for their role, otherwise navigate to either the remembered intended route if allowed (REQ-16) or the role landing route from authRouting.ts; (c) avoid any navigation before profile is resolved and clear remembered route after use. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/layouts/AppLayout.tsx",
+          "operation": "modify",
+          "description": "Ensure the header login/logout actions do not perform any role-based navigation on login (navigation decisions should be centralized in App.tsx after profile resolution). Keep logout behavior clearing cached data as-is. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "summary": "Remember a logged-out user’s requested protected route and, after login + profile resolution, redirect back only if authorized; otherwise redirect to role landing.",
+      "acceptanceCriteria": [
+        "Attempting to open any protected route while logged out does not permanently bounce the user to '/'; instead, the requested route is remembered for after login.",
+        "After login, if the remembered route is allowed by RoleGate for the resolved profile role, the user is redirected to that remembered route.",
+        "After login, if the remembered route is not allowed for the resolved role, the user is redirected to the correct role landing route and not left on an access-denied screen."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/auth/RoleGate.tsx",
+          "operation": "modify",
+          "description": "When a user is not authenticated and attempts to view gated content, store the current route as the intended destination using intendedRoute.ts (so it can be honored after login). Keep existing RoleGate authorization behavior for authenticated users unchanged. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/auth/AccessDeniedScreen.tsx",
+          "operation": "modify",
+          "description": "Update unauthenticated messaging/link behavior so users are not encouraged into a hardcoded home bounce that would override the remembered intended route; keep the component usable for both unauthenticated and unauthorized states. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire intended-route honoring into the existing post-login redirect logic: after profile resolution, navigate to the remembered route only if permitted for the resolved role (per authRouting.ts), otherwise navigate to the role-based landing route and clear the remembered route. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

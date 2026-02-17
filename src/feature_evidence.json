@@ -1,0 +1,50 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-fix-the-login-routing-flow-so-the-app-does-not-navigate-into-the-main-app-experience-until-the-signed-in-user-s-existing-profile-user-id-profile-record-has-been-fetched-and-resolved-once-resolved-redirect-the-user-to-the-correct-role-based-landing-route-or-keep-them-on-their-intended-route-if-permitted",
+      "featureTitle": "Fix the login routing flow so the app does not navigate into the main app experience until the signed-in user’s existing profile (user id/profile record) has been fetched and resolved; once resolved, redirect the user to the correct role-based landing route (or keep them on their intended route if permitted).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/layouts/AppLayout.tsx",
+        "frontend/src/utils/authRouting.ts",
+        "frontend/src/utils/intendedRoute.ts"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "user-approval@3.0.0"
+      ],
+      "testIds": [
+        "REQ-15"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-preserve-and-honor-the-user-s-intended-destination-across-the-login-flow-when-a-user-hits-a-protected-route-while-logged-out-store-that-route-and-after-successful-login-profile-resolution-navigate-back-to-it-only-if-the-user-s-resolved-role-is-authorized-for-that-route-otherwise-fall-back-to-the-role-based-landing-route",
+      "featureTitle": "Preserve and honor the user’s intended destination across the login flow: when a user hits a protected route while logged out, store that route and, after successful login + profile resolution, navigate back to it only if the user’s resolved role is authorized for that route; otherwise fall back to the role-based landing route.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/auth/AccessDeniedScreen.tsx",
+        "frontend/src/components/auth/RoleGate.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "user-approval@3.0.0"
+      ],
+      "testIds": [
+        "REQ-16"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
